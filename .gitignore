@@ -1,0 +1,11 @@
+# venv
+venv
+
+# environment variables
+.env
+
+# pycache
+*__pycache__
+
+# vscode foldder
+.vscode

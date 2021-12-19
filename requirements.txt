@@ -1,0 +1,16 @@
+certifi==2021.10.8
+charset-normalizer==2.0.9
+click==7.1.2
+colorama==0.4.4
+gql==2.0.0
+graphql-core==2.3.2
+idna==3.3
+pkg_resources==0.0.0
+promise==2.3
+requests==2.26.0
+Rx==1.6.1
+shellingham==1.4.0
+six==1.16.0
+typer==0.3.2
+typer-cli==0.0.12
+urllib3==1.26.7
