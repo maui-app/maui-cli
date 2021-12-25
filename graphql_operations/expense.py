@@ -7,6 +7,9 @@ DAILYEXPENSES = gql(
                 expenses {
                     name
                     amount
+                    user {
+                        currency
+                    }
                 }
                 sum
                 pagination {

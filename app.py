@@ -1,7 +1,9 @@
 from commands.add import add_expense
+from commands.view import view_expenses
 from callbacks.maui import maui_callback
 from middlewares.middlewares import auth_middleware
 from datetime import datetime
+from utilities.date import generate_current_date
 import typer
 import config
 
@@ -25,15 +27,30 @@ def cli_add_expense(
     name: str = typer.Argument(..., help="Name of the expense to add"),
     amount: float = typer.Argument(..., help="Amount spent on the expense being added"),
     date: datetime = typer.Option(
-        datetime.now().strftime("%Y-%m-%d"),
+        generate_current_date(),
         "--date",
         "-d",
         formats=["%Y-%m-%d"],
         help="Date this expense was incurred",
     ),
 ):
-    """command to add new expenses"""
+    """add a new expense"""
     add_expense(name, amount, date)
+
+
+@auth_middleware
+@app.command("view")
+def cli_view_expenses(
+    date: datetime = typer.Option(
+        generate_current_date(),
+        "--date",
+        "-d",
+        formats=["%Y-%m-%d"],
+        help="Date this expense was incurred",
+    )
+):
+    """view expenses"""
+    view_expenses(date)
 
 
 if __name__ == "__main__":
