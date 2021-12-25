@@ -3,6 +3,7 @@ from gql.transport.requests import RequestsHTTPTransport
 from utilities.auth import fetch_auth_token
 import os
 
+
 def get():
     transport = RequestsHTTPTransport(
         url=os.environ.get("GRAPHQL_URL"),

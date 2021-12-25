@@ -20,10 +20,15 @@ DAILYEXPENSES = gql(
 
 ADDEXPENSE = gql(
     """
-        mutation AddExpense($name: String!, $amount: Float!) {
-            addExpense(name: $name, amount: $amount) {
+        mutation AddExpense($name: String!, $amount: Float!, $date: String) {
+            addExpense(name: $name, amount: $amount, date: $date) {
                 sum
                 errorId
+                expense {
+                    user {
+                        currency
+                    }
+                }
             }
         }
     """
