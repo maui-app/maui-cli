@@ -1,5 +1,6 @@
 from commands.authenticate import authenticate
-from utilities.file import store_auth_token
+from utilities.auth import store_auth_token
+from callbacks.maui import maui_callback
 import typer
 import config
 
@@ -10,12 +11,7 @@ config.set()
 
 @app.callback(invoke_without_command=True)
 def callback():
-    auth_token = authenticate()
-    if auth_token is None:
-        return typer.echo("There was a problem authenticating.")
-
-    store_auth_token(auth_token)
-    typer.echo("Authenticated successfully. Run maui --help to see a list of available commands")
+    maui_callback()
 
 if __name__ == '__main__':
     app()
