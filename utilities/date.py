@@ -19,3 +19,7 @@ def get_day_suffix(day: int):
         if 11 <= day <= 13
         else str(day) + {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
     )
+
+
+def get_month_string(date: datetime):
+    return date.strftime("%B %Y")

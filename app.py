@@ -1,6 +1,8 @@
 from commands.add import add_expense
 from commands.view import view_expenses
 from commands.summary import view_summary
+from commands.month import view_month
+from commands.terminate import terminate
 from callbacks.maui import maui_callback
 from middlewares.middlewares import auth_middleware
 from datetime import datetime
@@ -59,6 +61,22 @@ def cli_view_expenses(
 def cli_view_summary():
     """view your maui summary"""
     view_summary()
+
+
+@auth_middleware
+@app.command("month")
+def cli_this_month(
+    date: datetime = typer.Option(generate_current_date(), "--date", "-d")
+):
+    """view income/expense statistics for the current month"""
+    view_month(date)
+
+
+@auth_middleware
+@app.command("terminate")
+def cli_terminate():
+    """end your maui session"""
+    terminate()
 
 
 if __name__ == "__main__":

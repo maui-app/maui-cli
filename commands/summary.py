@@ -27,5 +27,5 @@ def parse_summary_text(data):
     text += f"Total Income Earned - {formatted_total}\n"
     text += f"Income Spent - {formatted_spent}\n"
     text += f"Income Remaining - {formatted_remainder}"
-    
+
     return text

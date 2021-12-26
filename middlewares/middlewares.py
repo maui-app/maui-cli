@@ -6,6 +6,7 @@ import typer
 def auth_middleware(command):
     @functools.wraps(command)
     def middleware(kwargs):
+        typer.echo("Olamileke")
         if fetch_auth_token() is None:
             return typer.secho(
                 "You are not authenticated.", bg=typer.colors.RED, fg=typer.colors.WHITE
