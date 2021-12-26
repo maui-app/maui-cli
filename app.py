@@ -1,5 +1,6 @@
 from commands.add import add_expense
 from commands.view import view_expenses
+from commands.summary import view_summary
 from callbacks.maui import maui_callback
 from middlewares.middlewares import auth_middleware
 from datetime import datetime
@@ -51,6 +52,13 @@ def cli_view_expenses(
 ):
     """view expenses"""
     view_expenses(date)
+
+
+@auth_middleware
+@app.command("summary")
+def cli_view_summary():
+    """view your maui summary"""
+    view_summary()
 
 
 if __name__ == "__main__":
