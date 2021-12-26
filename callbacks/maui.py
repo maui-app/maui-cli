@@ -11,7 +11,7 @@ def maui_callback():
     if token is None:
         auth_token = authenticate()
         if auth_token is None:
-            return typer.echo("There was a problem authenticating.")
+            return typer.echo("There was a problem authenticating. Trying again...")
 
         store_auth_token(auth_token)
         return typer.echo(

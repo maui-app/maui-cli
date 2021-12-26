@@ -6,4 +6,4 @@ import os
 def terminate():
     config_path = app_dir / "config.json"
     os.remove(config_path)
-    typer.echo("Your session has been ended")
+    typer.echo("Your session has been ended.")

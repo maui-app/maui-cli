@@ -2,6 +2,7 @@ from datetime import datetime, date as dt
 from client import get as get_client
 from graphql_operations.expense import DAILYEXPENSES
 from utilities.date import get_formatted_date_string
+from utilities.error import error_handler
 import typer
 
 
@@ -16,6 +17,7 @@ def view_expenses(date: datetime):
         typer.echo(text)
     except Exception as exception:
         typer.echo(exception)
+        error_handler()
 
 
 def parse_expenses_text(data, date: datetime):

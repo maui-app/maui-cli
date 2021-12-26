@@ -1,6 +1,7 @@
 from client import get as get_client
 from graphql_operations.income import CURRENTMONTHINCOME
 from utilities.date import get_month_string
+from utilities.error import error_handler
 from datetime import datetime
 import typer
 
@@ -12,10 +13,13 @@ def view_month(date: datetime):
         response = client.execute(CURRENTMONTHINCOME, variable_values=variables)[
             "currentMonthIncome"
         ]
+        if response is None:
+            return error_handler("PeriodIncomeDoesNotExist", date)
         text = parse_this_month_text(response, date)
         typer.echo(text)
     except Exception as exception:
         typer.echo(exception)
+        error_handler()
 
 
 def parse_this_month_text(data, date: datetime):

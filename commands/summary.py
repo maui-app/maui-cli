@@ -1,5 +1,6 @@
 from client import get as get_client
 from graphql_operations.income import INCOMESTATS
+from utilities.error import error_handler
 import typer
 
 
@@ -11,6 +12,7 @@ def view_summary():
         typer.echo(text)
     except Exception as exception:
         typer.echo(exception)
+        error_handler()
 
 
 def parse_summary_text(data):

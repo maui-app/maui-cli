@@ -2,6 +2,7 @@ from datetime import datetime, date as dt
 from client import get as get_client
 from graphql_operations.expense import ADDEXPENSE
 from utilities.date import get_formatted_date_string
+from utilities.error import error_handler
 import typer
 
 
@@ -21,3 +22,4 @@ def add_expense(name: str, amount: float, date: datetime):
         typer.echo(text)
     except Exception as exception:
         typer.echo(exception)
+        error_handler()
